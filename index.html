@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adithya Kilaru — Operations, Data & IT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E1A; --panel:#12172B; --panel2:#1A2140;
+    --cyan:#22D3EE; --violet:#8B5CF6; --lime:#A3E635; --amber:#FBBF24; --pink:#F472B6;
+    --text:#E7EAF3; --muted:#9AA3C4; --line:rgba(255,255,255,.09);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(11,14,26,.75);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:'Space Grotesk';font-weight:700;font-size:1.1rem;letter-spacing:-.02em}
+  .logo span{color:var(--cyan)}
+  .navlinks{display:flex;gap:26px;font-size:.9rem;font-weight:500}
+  .navlinks a{color:var(--muted);transition:color .2s}
+  .navlinks a:hover{color:var(--text)}
+  .navlinks .cta{color:var(--ink);background:var(--lime);padding:8px 16px;border-radius:8px;font-weight:600}
+  @media(max-width:720px){.navlinks{display:none}}
+
+  /* HERO */
+  header{position:relative;padding:90px 0 70px;overflow:hidden}
+  .glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0}
+  .g1{width:420px;height:420px;background:var(--violet);top:-120px;right:-80px}
+  .g2{width:360px;height:360px;background:var(--cyan);bottom:-160px;left:-120px}
+  header .wrap{position:relative;z-index:2}
+  .eyebrow{font-family:'JetBrains Mono';font-size:.8rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:20px}
+  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.03em;margin-bottom:22px}
+  h1 em{font-style:normal;background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:1.18rem;color:var(--muted);max-width:640px;margin-bottom:34px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:13px 22px;border-radius:10px;font-weight:600;font-size:.95rem;transition:transform .15s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--lime);color:var(--ink)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(163,230,53,.3)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat .n{font-family:'Space Grotesk';font-weight:700;font-size:1.9rem;letter-spacing:-.02em}
+  .stat:nth-child(1) .n{color:var(--cyan)}
+  .stat:nth-child(2) .n{color:var(--lime)}
+  .stat:nth-child(3) .n{color:var(--amber)}
+  .stat:nth-child(4) .n{color:var(--pink)}
+  .stat .l{font-size:.82rem;color:var(--muted);margin-top:4px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* SECTION SHELL */
+  section{padding:72px 0;position:relative}
+  .sechead{display:flex;align-items:baseline;gap:16px;margin-bottom:40px}
+  .sechead .idx{font-family:'JetBrains Mono';color:var(--violet);font-size:.9rem}
+  .sechead h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.02em}
+  .sechead .rule{flex:1;height:1px;background:var(--line)}
+
+  /* DOMAINS */
+  .domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .dcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .2s,border-color .2s}
+  .dcard:hover{transform:translateY(-4px)}
+  .dcard .tag{font-family:'JetBrains Mono';font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:16px}
+  .dcard h3{font-family:'Space Grotesk';font-weight:600;font-size:1.25rem;margin-bottom:10px}
+  .dcard p{font-size:.92rem;color:var(--muted)}
+  .dcard:nth-child(1){border-top:3px solid var(--cyan)} .dcard:nth-child(1) .tag{background:rgba(34,211,238,.12);color:var(--cyan)}
+  .dcard:nth-child(2){border-top:3px solid var(--violet)} .dcard:nth-child(2) .tag{background:rgba(139,92,246,.14);color:var(--violet)}
+  .dcard:nth-child(3){border-top:3px solid var(--lime)} .dcard:nth-child(3) .tag{background:rgba(163,230,53,.12);color:var(--lime)}
+  .dcard:nth-child(4){border-top:3px solid var(--amber)} .dcard:nth-child(4) .tag{background:rgba(251,191,36,.12);color:var(--amber)}
+  .dcard:nth-child(5){border-top:3px solid var(--pink)} .dcard:nth-child(5) .tag{background:rgba(244,114,182,.12);color:var(--pink)}
+  .dcard:hover{border-color:rgba(255,255,255,.2)}
+
+  /* EXPERIENCE TIMELINE */
+  .tl{position:relative;padding-left:28px}
+  .tl::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--cyan),var(--violet),var(--pink))}
+  .job{position:relative;padding:0 0 34px 8px}
+  .job::before{content:'';position:absolute;left:-27px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--ink);border:2px solid var(--cyan)}
+  .job:nth-child(2)::before{border-color:var(--violet)}
+  .job:nth-child(3)::before{border-color:var(--lime)}
+  .job:nth-child(4)::before{border-color:var(--amber)}
+  .job:nth-child(5)::before{border-color:var(--pink)}
+  .job .when{font-family:'JetBrains Mono';font-size:.78rem;color:var(--muted)}
+  .job h3{font-family:'Space Grotesk';font-weight:600;font-size:1.2rem;margin:4px 0 2px}
+  .job .co{color:var(--cyan);font-size:.95rem;font-weight:500;margin-bottom:10px}
+  .job ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .job li{font-size:.92rem;color:var(--muted);padding-left:18px;position:relative}
+  .job li::before{content:'▹';position:absolute;left:0;color:var(--violet)}
+
+  /* SKILLS */
+  .skillgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .skillcol{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .skillcol h4{font-family:'Space Grotesk';font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .skillcol h4::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--cyan)}
+  .skillcol:nth-child(2) h4::before{background:var(--violet)}
+  .skillcol:nth-child(3) h4::before{background:var(--lime)}
+  .skillcol:nth-child(4) h4::before{background:var(--amber)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:'JetBrains Mono';font-size:.78rem;padding:6px 11px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text)}
+
+  /* CERT / EDU */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.twocol{grid-template-columns:1fr}}
+  .block{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .block h4{font-family:'Space Grotesk';font-size:1.1rem;margin-bottom:16px}
+  .edu-item{margin-bottom:14px}
+  .edu-item .deg{font-weight:600;font-size:.98rem}
+  .edu-item .sch{color:var(--muted);font-size:.88rem}
+  .certlist{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .certlist li{font-size:.9rem;color:var(--muted);padding-left:22px;position:relative}
+  .certlist li::before{content:'✦';position:absolute;left:0;color:var(--amber)}
+
+  /* CONTACT */
+  .contact{text-align:center;background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:24px;padding:60px 30px;position:relative;overflow:hidden}
+  .contact .glow{opacity:.35}
+  .contact h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.9rem,5vw,3rem);letter-spacing:-.02em;margin-bottom:16px;position:relative}
+  .contact p{color:var(--muted);max-width:480px;margin:0 auto 30px;position:relative}
+  .contact-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+
+  footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Adithya<span>.</span>Kilaru</div>
+    <div class="navlinks">
+      <a href="#domains">Focus</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="wrap">
+    <div class="eyebrow">Cleveland, OH · Open to relocation</div>
+    <h1>I keep complex<br><em>operations moving.</em></h1>
+    <p class="lede">Project coordinator and data analyst with a Master's in Business Information Systems — bridging operations, supply chain, IT support, and analytics to keep teams, data, and systems running without a hitch.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Let's connect →</a>
+      <a href="#experience" class="btn btn-ghost">View experience</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">99.9%</div><div class="l">Data accuracy maintained</div></div>
+      <div class="stat"><div class="n">40%</div><div class="l">Processing time reduced</div></div>
+      <div class="stat"><div class="n">500+</div><div class="l">End users supported</div></div>
+      <div class="stat"><div class="n">15+</div><div class="l">Live events coordinated</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="domains">
+  <div class="wrap">
+    <div class="sechead reveal"><span class="idx">01</span><h2>What I do</h2><span class="rule"></span></div>
+    <div class="domains">
+      <div class="dcard reveal"><span class="tag">Coordination</span><h3>Project & Operations</h3><p>Managing workflows, timelines, documentation, and cross-functional teams from kickoff to close — keeping every moving part aligned.</p></div>
+      <div class="dcard reveal"><span class="tag">Analytics</span><h3>Data Analysis</h3><p>Turning raw data into dashboards and insights with Python, SQL, and Power BI to drive faster, better decisions.</p></div>
+      <div class="dcard reveal"><span class="tag">Logistics</span><h3>Supply Chain</h3><p>Inventory tracking, demand analysis, vendor coordination, and shipment documentation to keep goods flowing on time.</p></div>
+      <div class="dcard reveal"><span class="tag">Support</span><h3>IT Help Desk</h3><p>Level 1 & 2 troubleshooting, ITSM ticketing, and networking fundamentals to keep users and systems online.</p></div>
+      <div class="dcard reveal"><span class="tag">Infrastructure</span><h3>Data Center / Systems</h3><p>Hardware diagnostics, device configuration, asset lifecycle, and equipment health monitoring in hands-on environments.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sechead reveal"><span class="idx">02</span><h2>Experience</h2><span class="rule"></span></div>
+    <div class="tl">
+      <div class="job reveal">
+        <div class="when">JAN 2026 — PRESENT</div>
+        <h3>AI &amp; Data Project Coordinator</h3>
+        <div class="co">Centific · Cleveland, OH</div>
+        <ul>
+          <li>Coordinate on-site research and data projects across concurrent teams, managing documentation, NDAs, and compliance.</li>
+          <li>Automate data workflows with Python &amp; SQL — cut processing time 40%, held 99.9% accuracy.</li>
+          <li>Build Power BI dashboards tracking KPIs, progress, and operational metrics for leadership.</li>
+          <li>Provide hands-on IT support: hardware, network diagnostics, and device configuration.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="when">SEP 2022 — JUL 2023</div>
+        <h3>Manager / IT Helpdesk Support</h3>
+        <div class="co">Amazon · Hyderabad, India</div>
+        <ul>
+          <li>Delivered first-level IT support for 500+ warehouse and office associates.</li>
+          <li>Managed payroll, attendance, and access tickets through internal ITSM tools.</li>
+          <li>Liaised across HR, IT, finance, and operations to resolve cross-functional issues.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="when">JUL 2025 — AUG 2025</div>
+        <h3>Marketing Analytics (Management Trainee)</h3>
+        <div class="co">Switch Global · Dayton, OH</div>
+        <ul>
+          <li>Coordinated 15+ live events, boosting engagement 40% and $250K+ brand exposure.</li>
+          <li>Managed budgets and vendor negotiations — 30% fewer escalations, 15% cost savings.</li>
+          <li>Ran performance analysis that lifted lead conversions 35%.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="when">JAN 2021 — MAY 2023</div>
+        <h3>Structural &amp; RF Analysis Engineer</h3>
+        <div class="co">ISRO (NRSC) · Hyderabad, India</div>
+        <ul>
+          <li>Built 3D CAD/FEA models for a 7.5m ground station antenna under environmental loads.</li>
+          <li>Automated data processing with Python &amp; MATLAB, improving efficiency and accuracy.</li>
+          <li>Partnered with engineering and IT on system validation and secure data handling.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="when">JAN 2021 — OCT 2021</div>
+        <h3>Customer Care Service Associate</h3>
+        <div class="co">Teleperformance (Flipkart) · Hyderabad, India</div>
+        <ul>
+          <li>Handled 50+ inquiries daily at an 85% first-call resolution rate.</li>
+          <li>Rolled out a new ticketing system — response times down 40%, satisfaction 75%→90%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sechead reveal"><span class="idx">03</span><h2>Toolkit</h2><span class="rule"></span></div>
+    <div class="skillgrid">
+      <div class="skillcol reveal">
+        <h4>Data &amp; Analytics</h4>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Pivot Tables</span><span class="chip">Data Modeling</span></div>
+      </div>
+      <div class="skillcol reveal">
+        <h4>IT &amp; Networking</h4>
+        <div class="chips"><span class="chip">LAN/WAN</span><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">ITSM</span><span class="chip">System Admin</span></div>
+      </div>
+      <div class="skillcol reveal">
+        <h4>Operations &amp; Supply Chain</h4>
+        <div class="chips"><span class="chip">Inventory</span><span class="chip">Logistics</span><span class="chip">ERP/QC</span><span class="chip">Vendor Coord.</span><span class="chip">Process Improve</span></div>
+      </div>
+      <div class="skillcol reveal">
+        <h4>Enterprise &amp; Cloud</h4>
+        <div class="chips"><span class="chip">Oracle Cloud</span><span class="chip">MS Office</span><span class="chip">CRM</span><span class="chip">Payroll/HR</span><span class="chip">AutoCAD</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="edu">
+  <div class="wrap">
+    <div class="sechead reveal"><span class="idx">04</span><h2>Education &amp; Certs</h2><span class="rule"></span></div>
+    <div class="twocol">
+      <div class="block reveal">
+        <h4>Education</h4>
+        <div class="edu-item"><div class="deg">M.B. — Information Systems</div><div class="sch">Cleveland State University · Cleveland, OH</div></div>
+        <div class="edu-item"><div class="deg">B.Tech — Mechanical Engineering</div><div class="sch">B V Raju Institute of Technology · Hyderabad, India</div></div>
+      </div>
+      <div class="block reveal">
+        <h4>Certifications</h4>
+        <ul class="certlist">
+          <li>Oracle Cloud Infrastructure 2023 AI Certified</li>
+          <li>Oracle Cloud Data Management 2023 Certified</li>
+          <li>AI for Everyone — Coursera / deeplearning.ai</li>
+          <li>ISRO (NRSC) — Space Technology &amp; Applications</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="glow g1"></div>
+      <h2>Let's build something reliable.</h2>
+      <p>Open to roles in project coordination, operations, data analysis, supply chain, and IT support. Authorized to work in the U.S. on F-1 OPT with STEM extension eligibility.</p>
+      <div class="contact-row">
+        <a href="mailto:kilaruadithya04@gmail.com" class="btn btn-primary">✉ kilaruadithya04@gmail.com</a>
+        <a href="https://linkedin.com/in/adithyakilaru" class="btn btn-ghost">in · LinkedIn</a>
+        <a href="tel:+12162353706" class="btn btn-ghost">☎ +1 216-235-3706</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Designed &amp; built by Adithya Kilaru · Cleveland, OH</div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
