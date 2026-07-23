@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Adithya Kilaru</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=2E86C1&center=true&vCenter=true&width=600&lines=Data+%26+AI+Engineer;Building+data+pipelines+for+enterprise+AI;Python+%7C+SQL+%7C+Applied+ML" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1000&color=2E86C1&center=true&vCenter=true&width=600&lines=Data+%26+AI+Engineer;Data+Analyst;Building+data+pipelines+for+enterprise+AI;Python+%7C+SQL+%7C+Applied+ML" alt="Typing SVG" />
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 
 ## About Me
 
-I'm a Data & AI Engineer with a Master's in Business Information Systems, currently supporting enterprise AI data workflows — building ingestion pipelines, automating data cleaning and validation with Python and SQL, and helping prepare high-volume datasets for model training. I enjoy translating messy real-world data problems into reliable, repeatable systems, and I'm steadily growing toward full-stack engineering.
+I'm a Data & AI Engineer and Data Analyst with a Master's in Business Information Systems, currently supporting enterprise AI data workflows — building ingestion pipelines, automating data cleaning and validation with Python and SQL, and helping prepare high-volume datasets for model training. I enjoy translating messy real-world data problems into reliable, repeatable systems, and I'm steadily growing toward full-stack engineering.
 
 - 🔭 Currently working on enterprise AI data pipelines and automation
 - 🌱 Learning JavaScript/TypeScript and deepening my applied ML foundations
